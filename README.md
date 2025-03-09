@@ -3,7 +3,7 @@
 ## Project Description
 This project analyzes data from an airline loyalty program, exploring the relationship between different variables such as education level, salary, loyalty card type, flight distance, and points accumulation. Data cleaning, exploration, and visualization techniques have been applied to extract key insights.
 
-## 🛠️ Technologies Used
+## Technologies Used
 This project was developed in **Python** using the following libraries:
 
 - **NumPy**: Numerical array manipulation and mathematical calculations.
