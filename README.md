@@ -1,53 +1,101 @@
 # Loyalty Program Data Analysis
 
-## Project Description
-This project analyzes data from an airline loyalty program, exploring the relationship between different variables such as education level, salary, loyalty card type, flight distance, and points accumulation. Data cleaning, exploration, and visualization techniques have been applied to extract key insights.
+This project is the individual evaluation for **Module 3 of the Adalab Data Analyst bootcamp**. The main objective is to conduct a comprehensive data analysis of a customer loyalty program using two original datasets:
 
-## Technologies Used
+- `df_flights.csv`: Contains information about customer flights.
+- `df_loyalty.csv`: Contains information about customers and their participation in the loyalty program.
+
+After cleaning and processing these datasets, we generated a unified dataset:
+
+- `airline_loyalty_programme.csv`: Consolidates customer and flight information, ready for final analysis.
+
+To achieve this, we followed a structured process that includes initial exploration, handling of missing values, and visualization.
+
+---
+
+## Project Structure
+
+1. **Exploratory Data Analysis (EDA)**
+   - Loaded the datasets into `pandas` and analyzed their structure (`.info()`, `.head()`, `.columns()`, `.nunique()`).
+   - Normalized column names (lowercase and without spaces) for easier data handling.
+   - Examined unique values in key columns to identify patterns and potential typographical errors.
+   - Identified and managed duplicates in `df_flights`, opting for aggregation via `groupby().agg()` instead of direct removal.
+
+2. **Data Cleaning**
+   - Verified the consistency of categorical data and applied normalization (`str.strip().str.lower()`).
+   - Reviewed data types and performed necessary conversions for optimization.
+
+3. **Handling Missing Values**
+   - Detected missing values in `df_loyalty`, particularly in `salary`, `cancellation_year`, and `cancellation_month`.
+   - Imputed `salary` using `IterativeImputer`, after converting `education` and `postal_code` to numeric values to include them in the imputation process.
+   - For `cancellation_year` and `cancellation_month`, after analyzing their distribution, we determined that missing values corresponded to **active customers**, so we filled them accordingly.
+
+4. **Visualization and Analysis**
+   - Created graphical analyses to answer key questions regarding flight distribution, point accumulation, customer geographic distribution, salary trends by education level, and segmentation by loyalty card type, marital status, and gender.
+   - These insights help understand customer behavior and suggest improvements for the loyalty program.
+   - **Important:** The loyalty program is exclusively for **residents of Canada**.
+
+---
+
+## Tools Used
+
 This project was developed in **Python** using the following libraries:
 
 - **NumPy**: Numerical array manipulation and mathematical calculations.
 - **Pandas**: Data analysis, cleaning, and structured data manipulation.
-- **Matplotlib**: Creation of graphical visualizations.
+- **Matplotlib**: Graphical visualization creation.
 - **Seaborn**: Statistical graph generation with an enhanced design.
 - **Scikit-Learn**: Handling missing values and imputation with:
   - `SimpleImputer`
   - `IterativeImputer`
   - `KNNImputer`
-- **OS**: For file and directory operations.
+- **OS**: File and directory operations.
 
-Additional configurations:
-- **`pd.set_option('display.max_columns', None)`**: To display all columns without truncation.
+### Additional Configurations
 
-## Data Exploration and Cleaning
-### Data Loading
-The data comes from two initial CSV files:
-- `Customer Loyalty History.csv`: Contains customer loyalty information, including loyalty levels and demographic data.
-- `Customer Flight Activity.csv`: Contains customer flight history, including distances traveled and points accumulated.
+To improve the data analysis experience, we included the following configurations:
 
-Both datasets were processed, cleaned, and combined to generate a consolidated file:
-- `airline_loyalty_programme.csv`: Contains cleaned and structured data ready for analysis.
+```python
+pd.set_option('display.max_columns', None)  # Display all columns without truncation
+```
 
-- Missing values and duplicates were removed.
-- Column names and categorical values were normalized.
-- Missing values in `salary` were imputed using **IterativeImputer**.
-- Data was analyzed to detect possible inconsistencies.
+Additionally, to prevent `FutureWarning` messages from cluttering the console without affecting code execution, we applied the following setting:
 
-## Visualizations and Analysis
-Various charts were created to visualize customer distribution, booked flights, the relationship between flight distance and accumulated points, and other key aspects of the loyalty program.
+```python
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+```
+
+To restore default warning settings:
+
+```python
+warnings.filterwarnings("default")
+```
+
+This keeps the workflow clean while retaining critical alerts.
+
+---
 
 ## How to Reproduce the Analysis
+
+To run this analysis on your own environment, follow these steps:
+
 1. Clone this repository:
-   ```bash
-   git clone https://github.com/your_username/your_repository.git
-   ```
+
+```bash
+git clone https://github.com/your_username/your_repository.git
+```
+
 2. Install the required dependencies:
-   ```bash
-   pip install pandas numpy matplotlib seaborn scikit-learn
-   ```
+
+```bash
+pip install pandas numpy matplotlib seaborn scikit-learn
+```
+
 3. Open the **Jupyter Notebook** and execute the code step by step.
 
 
 ---
  **Thanks for checking out this project!** 
+ _Elena_
 
