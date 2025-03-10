@@ -50,6 +50,8 @@ This project was developed in **Python** using the following libraries:
   - `IterativeImputer`
   - `KNNImputer`
 - **OS**: File and directory operations.
+- IPython.display: Displaying images and Markdown content within Jupyter Notebooks.
+
 
 ### Additional Configurations
 
